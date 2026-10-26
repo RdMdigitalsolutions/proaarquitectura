@@ -54,6 +54,11 @@ button { cursor: pointer; }
 .site-header.scrolled .main-nav a:hover { color: var(--blue); }
 .main-nav .nav-cta { border: 1px solid rgba(255,255,255,.65); padding: 10px 15px; border-radius: 999px; }
 .site-header.scrolled .main-nav .nav-cta { color: #fff; background: var(--blue); border-color: var(--blue); }
+.language-switcher { display: inline-flex; align-items: center; gap: 5px; margin-left: -10px; padding-left: 12px; border-left: 1px solid rgba(255,255,255,.35); }
+.language-switcher a { display: grid; place-items: center; min-width: 34px; min-height: 34px; padding: 0 8px; border-radius: 999px; font-size: .75rem; letter-spacing: .06em; }
+.language-switcher a[aria-current="page"] { color: var(--ink); background: #fff; }
+.site-header.scrolled .language-switcher { border-left-color: var(--line); }
+.site-header.scrolled .language-switcher a[aria-current="page"] { color: #fff; background: var(--blue); }
 .menu-toggle { display: none; width: 46px; height: 46px; border: 0; border-radius: 12px; background: rgba(255,255,255,.12); padding: 12px; }
 .menu-toggle span { display: block; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; }
 .site-header.scrolled .menu-toggle { background: var(--soft); }
@@ -212,6 +217,9 @@ button { cursor: pointer; }
   .main-nav.open { display: grid; }
   .main-nav a, .site-header .main-nav a { color: var(--ink); padding: 10px 8px; }
   .main-nav .nav-cta, .site-header .main-nav .nav-cta { color: #fff; background: var(--blue); border: 0; text-align: center; }
+  .language-switcher { justify-self: start; margin: 6px 0 0; padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+  .language-switcher a, .site-header .language-switcher a { min-width: 42px; padding: 7px 10px; text-align: center; }
+  .language-switcher a[aria-current="page"], .site-header .language-switcher a[aria-current="page"] { color: #fff; background: var(--blue); }
   .hero { min-height: 700px; }
   .hero-overlay { background: linear-gradient(90deg, rgba(5,8,28,.92), rgba(5,8,28,.58)); }
   .intro-grid, .process-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }

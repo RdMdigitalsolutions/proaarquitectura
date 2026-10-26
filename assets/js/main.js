@@ -22,6 +22,12 @@ document.querySelectorAll('.main-nav a').forEach((link) => {
   });
 });
 
+document.querySelectorAll('[data-language-link]').forEach((link) => {
+  link.addEventListener('click', () => {
+    link.href = `${link.href.split('#')[0]}${window.location.hash}`;
+  });
+});
+
 const toggleChat = (forceOpen) => {
   const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : chatPanel.hidden;
   chatPanel.hidden = !shouldOpen;
@@ -50,18 +56,20 @@ form?.addEventListener('submit', (event) => {
   if (!form.reportValidity()) return;
 
   const data = new FormData(form);
+  const isCatalan = document.documentElement.lang === 'ca';
   const subject = `Consulta web PROA - ${data.get('consulta')}`;
   const body = [
-    `Nombre: ${data.get('nombre')}`,
-    `Teléfono: ${data.get('telefono')}`,
+    `${isCatalan ? 'Nom' : 'Nombre'}: ${data.get('nombre')}`,
+    `${isCatalan ? 'Telèfon' : 'Teléfono'}: ${data.get('telefono')}`,
     `Email: ${data.get('email')}`,
     `Consulta: ${data.get('consulta')}`,
     '',
-    'Mensaje:',
+    isCatalan ? 'Missatge:' : 'Mensaje:',
     data.get('mensaje')
   ].join('\n');
 
   window.location.href = `mailto:administracio@proarquitectura.cat?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
